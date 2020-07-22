@@ -13,7 +13,7 @@ class Animal {
 class Mammel extends Animal {
   constructor(name, age, weight) {
     super(name, age, weight);
-    this.type = "Reptile";
+    this.type = "Mammel";
   }
 }
 class Reptile extends Animal {
