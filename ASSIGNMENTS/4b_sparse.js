@@ -91,55 +91,59 @@ class SparseMatrix {
       aPos < this.sparseMatrix.length &&
       bPos < addendMatrix.sparseMatrix.length
     ) {
-      // console.log("apos", aPos, "bpos", bPos);
-      //if row and col of addendMatrix is smaller
-      if (this.sparseMatrix[aPos].row > addendMatrix.sparseMatrix[bPos].row) {
-        //if row is less
-        // console.log("hii there", aPos, bPos);
-        sumMatrix.push(addendMatrix.sparseMatrix[bPos]);
-        bPos++;
-      } else {
-        //if row is greater or equal then col should be less
-        if (
-          this.sparseMatrix[aPos].row == addendMatrix.sparseMatrix[bPos].row &&
-          this.sparseMatrix[aPos].col > addendMatrix.sparseMatrix[bPos].col
-        ) {
-          sumMatrix.push(addendMatrix.sparseMatrix[bPos]);
-          bPos++;
-        } else {
-          //if row and col of calling  matrix is smaller
-          if (
-            this.sparseMatrix[aPos].row < addendMatrix.sparseMatrix[bPos].row
-          ) {
-            sumMatrix.push(this.sparseMatrix[aPos]);
-            aPos++;
-          } else {
-            if (
-              this.sparseMatrix[aPos].row ==
-                addendMatrix.sparseMatrix[bPos].row &&
-              this.sparseMatrix[aPos].col < addendMatrix.sparseMatrix[bPos].col
-            ) {
-              sumMatrix.push(this.sparseMatrix[aPos]);
-              aPos++;
-            } else {
-              // console.log(
-              //   "HEllO I am in last else",
-              //   this.sparseMatrix,
-              //   this.sparseMatrix[aPos].row
-              // );
-              sumMatrix.push({
-                row: this.sparseMatrix[aPos].row,
-                col: this.sparseMatrix[aPos].col,
-                value:
-                  this.sparseMatrix[aPos].value +
-                  addendMatrix.sparseMatrix[bPos].value
-              });
-              aPos++;
-              bPos++;
+            // console.log("apos", aPos, "bpos", bPos);
+            //if row and col of addendMatrix is smaller
+            if (this.sparseMatrix[aPos].row > addendMatrix.sparseMatrix[bPos].row) {
+                  //if row is less
+                  // console.log("hii there", aPos, bPos);
+                  sumMatrix.push(addendMatrix.sparseMatrix[bPos]);
+                  bPos++;
             }
+            else {
+                  //if row is greater or equal then col should be less
+                  if (
+                    this.sparseMatrix[aPos].row == addendMatrix.sparseMatrix[bPos].row &&
+                    this.sparseMatrix[aPos].col > addendMatrix.sparseMatrix[bPos].col
+                  ) {
+                          sumMatrix.push(addendMatrix.sparseMatrix[bPos]);
+                          bPos++;
+                    } 
+                  else {
+                          //if row and col of calling  matrix is smaller
+                          if (
+                            this.sparseMatrix[aPos].row < addendMatrix.sparseMatrix[bPos].row
+                          ) {
+                                  sumMatrix.push(this.sparseMatrix[aPos]);
+                                  aPos++;
+                            } 
+                          else {
+                                  if (
+                                    this.sparseMatrix[aPos].row ==
+                                    addendMatrix.sparseMatrix[bPos].row &&
+                                    this.sparseMatrix[aPos].col < addendMatrix.sparseMatrix[bPos].col
+                                   ) {
+                                            sumMatrix.push(this.sparseMatrix[aPos]);
+                                            aPos++;
+                                      } 
+                                    else {
+                                            // console.log(
+                                            //   "HEllO I am in last else",
+                                            //   this.sparseMatrix,
+                                            //   this.sparseMatrix[aPos].row
+                                            // );
+                                            sumMatrix.push({
+                                              row: this.sparseMatrix[aPos].row,
+                                              col: this.sparseMatrix[aPos].col,
+                                              value:
+                                                this.sparseMatrix[aPos].value +
+                                                addendMatrix.sparseMatrix[bPos].value
+                                            });
+                                            aPos++;
+                                            bPos++;
+                                      }
+                            }
+                  }
           }
-        }
-      }
     }
 
     while (aPos < this.sparseMatrix.length) {
